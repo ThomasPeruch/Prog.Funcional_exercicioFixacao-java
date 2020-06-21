@@ -39,12 +39,15 @@ public class Program {
 			System.out.println("Email of people whose salary is more than " + String.format("%.2f", salary));
 			emails.forEach(System.out::println);
 			
+			System.out.print("Enter letter: ");
+			String letter = sc.next();
+			
 			Double sumSalary = list.stream()
-					.filter(e -> e.getName().charAt(0)=='M')
+					.filter(e -> e.getName().charAt(0)==letter.charAt(0))
 					.map(e -> e.getSalary())
 					.reduce(0.0 ,(x,y) -> x+y);
 			
-			System.out.print("Sum of salary of people whose name starts with 'M':" + String.format("%.2f",sumSalary));
+			System.out.print("Sum of salary of people whose name starts with '" + letter +"' : " + String.format("%.2f",sumSalary));
 			
 		} catch (IOException e) {
 			System.out.println("Error : " + e.getMessage());
